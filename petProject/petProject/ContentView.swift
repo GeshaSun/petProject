@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct ContentView: View {
+    @Environment(\.managedObjectContext) var managedObjectContext
+    @FetchRequest(sortDescriptors: []) var debt: FetchedResults<Debt>
+    
     var body: some View {
         NavigationView{
             VStack {
@@ -15,10 +19,14 @@ struct ContentView: View {
                 AddNewPaymentButton()
                 DebtSumButton()
                 CollectSumButton()
-                //            Image(systemName: "globe")
-                //                .imageScale(.large)
-                //                .foregroundColor(.accentColor)
-                //            Text("Hello, world!")
+                List{
+                    ForEach(debt) {debt in HStack{
+                        Text(debt.name!)
+                        Text(String(debt.valueDebt))
+                        Text("\(debt.uuid!)")
+                    }
+                    }
+                }
             }.navigationTitle("Главная")
 //                    .padding()
         }
@@ -102,7 +110,7 @@ struct AddNewPaymentButton: View {
     var body: some View{
         Button(action: {
             print("Новый платеж")
-//            CoreDataConroller().addNewDebt(name: "MARK", debtValue: 1000, context: managedObjectContext)
+            DataConroller().addNewDebt(name: "MARK", valueDebt: 1000, context: managedObjectContext)
         }){
             Label("Новая запись", systemImage: "plus").frame(maxWidth: .infinity)
         }.buttonStyle(AddNewPaymentButtonStyle())

@@ -11,6 +11,9 @@
 		2627287829F6FADA0036D4EA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2627287729F6FADA0036D4EA /* ContentView.swift */; };
 		2627287A29F6FADB0036D4EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2627287929F6FADB0036D4EA /* Assets.xcassets */; };
 		2627287D29F6FADB0036D4EA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2627287C29F6FADB0036D4EA /* Preview Assets.xcassets */; };
+		2627288629F6FF1B0036D4EA /* DebtModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2627288429F6FF1B0036D4EA /* DebtModel.xcdatamodeld */; };
+		2627288829F6FFAA0036D4EA /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2627288729F6FFAA0036D4EA /* DataController.swift */; };
+		26A918A429F7020200BCC40B /* AddNewPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A918A329F7020200BCC40B /* AddNewPayment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +22,9 @@
 		2627287729F6FADA0036D4EA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2627287929F6FADB0036D4EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2627287C29F6FADB0036D4EA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2627288529F6FF1B0036D4EA /* FoodModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FoodModel.xcdatamodel; sourceTree = "<group>"; };
+		2627288729F6FFAA0036D4EA /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		26A918A329F7020200BCC40B /* AddNewPayment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewPayment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +57,10 @@
 		2627287429F6FADA0036D4EA /* petProject */ = {
 			isa = PBXGroup;
 			children = (
+				2627288329F6FEDD0036D4EA /* DataModel */,
 				2627287529F6FADA0036D4EA /* petProjectApp.swift */,
+				2627288729F6FFAA0036D4EA /* DataController.swift */,
+				26A918A329F7020200BCC40B /* AddNewPayment.swift */,
 				2627287729F6FADA0036D4EA /* ContentView.swift */,
 				2627287929F6FADB0036D4EA /* Assets.xcassets */,
 				2627287B29F6FADB0036D4EA /* Preview Content */,
@@ -65,6 +74,14 @@
 				2627287C29F6FADB0036D4EA /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2627288329F6FEDD0036D4EA /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				2627288429F6FF1B0036D4EA /* DebtModel.xcdatamodeld */,
+			);
+			path = DataModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +155,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2627287829F6FADA0036D4EA /* ContentView.swift in Sources */,
+				2627288829F6FFAA0036D4EA /* DataController.swift in Sources */,
 				2627287629F6FADA0036D4EA /* petProjectApp.swift in Sources */,
+				26A918A429F7020200BCC40B /* AddNewPayment.swift in Sources */,
+				2627288629F6FF1B0036D4EA /* DebtModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +359,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2627288429F6FF1B0036D4EA /* DebtModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2627288529F6FF1B0036D4EA /* FoodModel.xcdatamodel */,
+			);
+			currentVersion = 2627288529F6FF1B0036D4EA /* FoodModel.xcdatamodel */;
+			path = DebtModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2627286A29F6FADA0036D4EA /* Project object */;
 }
