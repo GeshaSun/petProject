@@ -110,7 +110,7 @@ struct AddNewPaymentButton: View {
     var body: some View{
         Button(action: {
             print("Новый платеж")
-            DataConroller().addNewDebt(name: "MARK", valueDebt: 1000, context: managedObjectContext)
+            DataConroller.shared.addNewDebt(name: "MARK", valueDebt: 1000, context: managedObjectContext)
         }){
             Label("Новая запись", systemImage: "plus").frame(maxWidth: .infinity)
         }.buttonStyle(AddNewPaymentButtonStyle())

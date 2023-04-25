@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct petProjectApp: App {
-    @StateObject private var dataController = DataConroller()
+    @StateObject private var dataController = DataConroller.shared
     
     var body: some Scene {
         WindowGroup {

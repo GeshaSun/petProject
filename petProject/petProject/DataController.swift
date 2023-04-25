@@ -10,6 +10,7 @@ import CoreData
 
 class DataConroller: ObservableObject{
     let container = NSPersistentContainer(name: "DebtModel")
+    static let shared = DataConroller()
     
     
     init(){
