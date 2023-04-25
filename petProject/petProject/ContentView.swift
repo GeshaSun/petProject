@@ -25,11 +25,18 @@ struct ContentView: View {
                         Text(String(debt.valueDebt))
                         Text("\(debt.uuid!)")
                     }
-                    }
+                    }.onDelete(perform: deleteCell)
                 }
             }.navigationTitle("Главная")
-//                    .padding()
         }
+    }
+    
+    func deleteCell(offset: IndexSet){
+        withAnimation{
+            offset.map{debt[$0]}.forEach(managedObjectContext.delete(_:))
+            DataConroller.shared.save(context: managedObjectContext)
+        }
+        
     }
 }
 
