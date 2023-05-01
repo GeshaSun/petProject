@@ -11,6 +11,7 @@ import CoreData
 class DataConroller: ObservableObject{
     let container = NSPersistentContainer(name: "DebtModel")
     static let shared = DataConroller()
+    var showingAddNewPaymet = false
     
     
     init(){
@@ -35,6 +36,18 @@ class DataConroller: ObservableObject{
         save(context: context)
     }
     
+    func addNewCollect(name: String, valueDebt: Double, context: NSManagedObjectContext){
+        let data = Collect(context: context)
+        data.name = name
+        data.uuid = UUID()
+        data.valueCollect = valueDebt
+        
+        save(context: context)
+    }
+    
+    func showingAddNewPaymetTuggle(){
+        self.showingAddNewPaymet.toggle()
+    }
     
 }
 

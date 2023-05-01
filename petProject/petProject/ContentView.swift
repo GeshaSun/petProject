@@ -11,27 +11,56 @@ import CoreData
 struct ContentView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     @FetchRequest(sortDescriptors: []) var debt: FetchedResults<Debt>
+    @FetchRequest(sortDescriptors: []) var collect: FetchedResults<Collect>
+    
+    @State var showingAddNewPayment = DataConroller.shared.showingAddNewPaymet
     
     var body: some View {
         NavigationView{
             VStack {
                 LatePaymentsButton()
+//                List{
+//                    ForEach(collect) {collect in HStack{
+//                        Text(collect.name!)
+//                        Text("\(collect.uuid!)")
+//                    }
+//                    }.onDelete(perform: deleteCellCollect)
+//
+//                }
                 AddNewPaymentButton()
+//                {DataConroller.shared.showingAddNewPaymet.toggle()}
+                    .sheet(isPresented: $showingAddNewPayment){AddNewPayment()}
                 DebtSumButton()
                 CollectSumButton()
-                List{
-                    ForEach(debt) {debt in HStack{
-                        Text(debt.name!)
-                        Text(String(debt.valueDebt))
-                        Text("\(debt.uuid!)")
-                    }
-                    }.onDelete(perform: deleteCell)
+                Button (action: {
+                    print( "Hello World tapped!")
+                }){
+                    if showingAddNewPayment{Text("true")}
+                    else{Text("false")}
+                    
                 }
+//                List{
+//                    ForEach(debt) {debt in HStack{
+//                        Text(debt.name!)
+//                        Text("\(debt.uuid!)")
+//                    }
+//                    }.onDelete(perform: deleteCellDebt)
+//                }.foregroundColor(.brown)
             }.navigationTitle("Главная")
         }
     }
     
-    func deleteCell(offset: IndexSet){
+    func deleteCellCollect(offset: IndexSet){
+//        print("deletCollect - "+"\(offset)")
+        withAnimation{
+            offset.map{collect[$0]}.forEach(managedObjectContext.delete(_:))
+            DataConroller.shared.save(context: managedObjectContext)
+        }
+        
+    }
+    
+    func deleteCellDebt(offset: IndexSet){
+//        print("deletDebt - "+"\(offset)")
         withAnimation{
             offset.map{debt[$0]}.forEach(managedObjectContext.delete(_:))
             DataConroller.shared.save(context: managedObjectContext)
@@ -117,7 +146,10 @@ struct AddNewPaymentButton: View {
     var body: some View{
         Button(action: {
             print("Новый платеж")
-            DataConroller.shared.addNewDebt(name: "MARK", valueDebt: 1000, context: managedObjectContext)
+            DataConroller.shared.showingAddNewPaymetTuggle()
+            if DataConroller.shared.showingAddNewPaymet{
+                print("true")
+            }else{print("false")}
         }){
             Label("Новая запись", systemImage: "plus").frame(maxWidth: .infinity)
         }.buttonStyle(AddNewPaymentButtonStyle())
