@@ -11,9 +11,7 @@ import CoreData
 class DataConroller: ObservableObject{
     let container = NSPersistentContainer(name: "DebtModel")
     static let shared = DataConroller()
-    var showingAddNewPaymet = false
-    
-    
+
     init(){
         container.loadPersistentStores {desc, error in
             if let error = error{print("Ошибка была маловероятно, но не невозможно - мы выпечатаем сообщение в журнал отладки Xcode \(error.localizedDescription)")}
@@ -45,9 +43,4 @@ class DataConroller: ObservableObject{
         save(context: context)
     }
     
-    func showingAddNewPaymetTuggle(){
-        self.showingAddNewPaymet.toggle()
-    }
-    
 }
-
