@@ -9,9 +9,7 @@ import Foundation
 import SwiftUI
 
 
-struct SumButtonStyle: ButtonStyle {
-    let orange2 = Color(red: 226/255, green: 135/255, blue: 67/255)
-    
+struct SumButtonStyle: ButtonStyle {    
         func makeBody(configuration: Configuration) -> some View {
             configuration.label
                 .font(.title2)
@@ -19,7 +17,7 @@ struct SumButtonStyle: ButtonStyle {
                 .foregroundColor(.white)
                 .padding()
                 .background(
-                    LinearGradient(gradient: Gradient(colors: [.pink, orange2]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                    LinearGradient(gradient: Gradient(colors: [MyColorMain().leftColorButton, MyColorMain().rightColorButton]), startPoint: .topLeading, endPoint: .bottomTrailing)
                     .cornerRadius(16))
                 .shadow(color: Color.black.opacity(0.2), radius: 8, x: 0, y: 4)
                 .scaleEffect(configuration.isPressed ? 0.95 : 1)
@@ -34,7 +32,6 @@ struct AddNewPaymentButtonStyle: ButtonStyle {
             .padding()
             .background(Color(.systemGray6))
             .foregroundColor(.pink)
-//            .buttonBorderShape(.capsule)
             .cornerRadius(20)
             .frame(maxWidth: .infinity)
             .scaleEffect(configuration.isPressed ? 0.95 : 1)
@@ -59,12 +56,6 @@ struct CollectSumButton: View {
 }
 
 struct DebtSumButton: View {
-//    @Environment(\.managedObjectContext) var managedObjectContext
-
-//    @FetchRequest(sortDescriptors: [] )  var debt: FetchedResults<Debt>
-//    guard let debt = debt else {print("dont unwarp")}
-    
-    
     var body: some View {
         Button(action: {print("перейти к долгам")}){
             
